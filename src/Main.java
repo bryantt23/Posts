@@ -10,14 +10,18 @@ public class Main {
 //		System.out.println(Database.Users.userMap.values());
 		
 		bry.createPost("Hello", "World");
-		bry.createPost("Title", "Body");
-		bry.createPost("My Favorite", "Things");		
-		bry.printUserPosts();
+		
+		bry.createComment("Hi back", 0);
+		bry.createPost("Title", "Body");	
+		bry.createPost("My Favorite", "Things");	
 
 		User jane=new User("jane");
 		Database.Users.addUser(jane);
+		jane.createComment("Hi bry", 0);
 		jane.createPost("jane", "doe");
-		jane.createPost("CS", "Comp Sci");
+		jane.createPost("CS", "Comp Sci");	
+		
+		bry.printUserPosts();
 		jane.printUserPosts();
 	}
 

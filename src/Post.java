@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Post {
 	static int nextAvailablePostId;
 	int postId;
@@ -20,4 +18,8 @@ public class Post {
 //			System.out.println("\t" + comment.comment+" by: "+user.name);
 //		}
 //	}
+	
+	void printPostComments() {
+		Database.printComments(this);
+	}
 }

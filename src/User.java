@@ -15,6 +15,10 @@ public class User {
 		new Post(title, body, this.userId);
 	}
 	
+	void createComment(String comment, int postId) {
+		new Comment(comment, this.userId, postId);
+	}
+	
 	void printUserPosts() {
 		Database.printPosts(this);
 	}

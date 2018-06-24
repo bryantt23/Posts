@@ -4,6 +4,7 @@ public class Database {
 	
 	static HashMap<Integer, User> userMap = new HashMap<>();
 	static HashMap<Integer, Post> postMap = new HashMap<>();
+	static HashMap<Integer, Comment> commentMap = new HashMap<>();
 	static HashMap<Integer, List<Integer>>userPostsMap=new HashMap<>();
 	static HashMap<Integer, List<Integer>>postCommentsMap=new HashMap<>();
 	
@@ -19,6 +20,7 @@ public class Database {
 		
 		static void addPost(Post post) {
 			postMap.put(post.postId, post);
+			postCommentsMap.put(post.postId, new ArrayList<Integer>());
 			UserPosts.addPost(post.userId, post.postId);
 		}
 	}
@@ -30,6 +32,15 @@ public class Database {
 			userPosts.add(postId);
 		}
 	}
+	
+	public static class Comments {
+		
+		static void addComment(Comment comment) {
+			List<Integer>postComments=postCommentsMap.get(comment.postId);
+			postComments.add(comment.commentId);
+			commentMap.put(comment.commentId, comment);
+		}
+	}
 
 	public static void printPosts(User user) {
 		List<Integer>postIds=Database.userPostsMap.get(user.userId);
@@ -37,8 +48,17 @@ public class Database {
 		for(Integer postId: postIds) {
 			System.out.println("Title: "+postMap.get(postId).title);
 			System.out.println("Body: "+postMap.get(postId).body);
-		}
-		
+			printComments(postMap.get(postId));
+		}		
+	}
+
+	public static void printComments(Post post) {
+		List<Integer>commentIds=Database.postCommentsMap.get(post.postId);
+		for(Integer commentId: commentIds) {
+			Comment comment=commentMap.get(commentId);
+			String userName=userMap.get(comment.userId).name;
+			System.out.println("\t"+comment.comment+" by "+userName);
+		}		
 	}
 
 }
