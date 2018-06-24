@@ -5,7 +5,6 @@ public class Post {
 	int postId;
 	int userId;
 	String title, body;
-	List<Comment> comments;
 
 	public Post(String title, String body, int userId) {
 		this.postId = nextAvailablePostId++;

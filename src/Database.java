@@ -5,6 +5,7 @@ public class Database {
 	static HashMap<Integer, User> userMap = new HashMap<>();
 	static HashMap<Integer, Post> postMap = new HashMap<>();
 	static HashMap<Integer, List<Integer>>userPostsMap=new HashMap<>();
+	static HashMap<Integer, List<Integer>>postCommentsMap=new HashMap<>();
 	
 	public static class Users {
 		
@@ -28,6 +29,16 @@ public class Database {
 			List<Integer>userPosts=userPostsMap.get(userId);
 			userPosts.add(postId);
 		}
+	}
+
+	public static void printPosts(User user) {
+		List<Integer>postIds=Database.userPostsMap.get(user.userId);
+		System.out.println("Here are the posts by: "+user.name);
+		for(Integer postId: postIds) {
+			System.out.println("Title: "+postMap.get(postId).title);
+			System.out.println("Body: "+postMap.get(postId).body);
+		}
+		
 	}
 
 }
