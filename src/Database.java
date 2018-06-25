@@ -41,24 +41,23 @@ public class Database {
 			commentMap.put(comment.commentId, comment);
 		}
 	}
-
-	public static void printPosts(User user) {
-		List<Integer>postIds=Database.userPostsMap.get(user.userId);
-		System.out.println("Here are the posts by: "+user.name);
-		for(Integer postId: postIds) {
-			System.out.println("Title: "+postMap.get(postId).title);
-			System.out.println("Body: "+postMap.get(postId).body);
-			printComments(postMap.get(postId));
-		}		
-	}
-
-	public static void printComments(Post post) {
-		List<Integer>commentIds=Database.postCommentsMap.get(post.postId);
-		for(Integer commentId: commentIds) {
-			Comment comment=commentMap.get(commentId);
-			String userName=userMap.get(comment.userId).name;
-			System.out.println("\t"+comment.comment+" by "+userName);
-		}		
-	}
-
+//
+//	public static void printPosts(User user) {
+//		List<Integer>postIds=Database.userPostsMap.get(user.userId);
+//		System.out.println("Here are the posts by: "+user.name);
+//		for(Integer postId: postIds) {
+//			System.out.println("Title: "+postMap.get(postId).title);
+//			System.out.println("Body: "+postMap.get(postId).body);
+//			printComments(postMap.get(postId));
+//		}		
+//	}
+//	
+//	public static void printComments(Post post) {
+//		List<Integer>commentIds=Database.postCommentsMap.get(post.postId);
+//		for(Integer commentId: commentIds) {
+//			Comment comment=commentMap.get(commentId);
+//			String userName=userMap.get(comment.userId).name;
+//			System.out.println("\t"+comment.comment+" by "+userName);
+//		}		
+//	}
 }

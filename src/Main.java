@@ -21,8 +21,8 @@ public class Main {
 		jane.createPost("jane", "doe");
 		jane.createPost("CS", "Comp Sci");	
 		
-		bry.printUserPosts();
-		jane.printUserPosts();
+		bry.printPosts();
+		jane.printPosts();
 	}
 
 }

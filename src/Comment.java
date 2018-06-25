@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class Comment {
 	static int nextAvailableCommentId;

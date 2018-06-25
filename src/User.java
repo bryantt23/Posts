@@ -18,8 +18,15 @@ public class User {
 	void createComment(String comment, int postId) {
 		new Comment(comment, this.userId, postId);
 	}
-	
-	void printUserPosts() {
-		Database.printPosts(this);
+
+	public void printPosts() {
+		List<Integer>postIds=Database.userPostsMap.get(this.userId);
+		System.out.println("Here are the posts by: "+this.name);
+		for(Integer postId: postIds) {
+			System.out.println("Title: "+Database.postMap.get(postId).title);
+			System.out.println("Body: "+Database.postMap.get(postId).body);
+			
+			Post.printComments(postId);
+		}		
 	}
 }
