@@ -13,23 +13,20 @@ public class Post {
 		this.body = body;
 		Database.Posts.addPost(this);
 	}
-//
-//	void printPostComments() {		
-//		for (Comment comment : comments) {
-//			User user=User.Users.userMap.get(this.userId);
-//			System.out.println("\t" + comment.comment+" by: "+user.name);
-//		}
-//	}
-//	
-//	void printPostComments() {
-//		Database.printComments(this);
-//	}
-	public static void printComments(int postId) {
-		List<Integer>commentIds=Database.postCommentsMap.get(postId);
-		for(Integer commentId: commentIds) {
-			Comment comment=Database.commentMap.get(commentId);
-			String userName=Database.userMap.get(comment.userId).name;
-			System.out.println("\t"+comment.comment+" by "+userName);
+	
+	public static void printPosts(User user) {
+		List<Integer>postIds=Database.userPostsMap.get(user.userId);
+		System.out.println("Here are the posts by: "+user.name);
+		for(Integer postId: postIds) {
+			System.out.println("Title: "+Database.postMap.get(postId).title);
+			System.out.println("Body: "+Database.postMap.get(postId).body);
+			
+			printPostComments(postId);
 		}		
 	}
+	
+	static void printPostComments(int postId) {
+		Comment.printComments(postId);
+	}
+	
 }

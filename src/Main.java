@@ -6,9 +6,6 @@ public class Main {
 		User bry=new User("bryant");
 		Database.Users.addUser(bry);
 		
-//		System.out.println(Database.Users.userMap.get(bry).name);
-//		System.out.println(Database.Users.userMap.values());
-		
 		bry.createPost("Hello", "World");
 		
 		bry.createComment("Hi back", 0);
@@ -21,8 +18,8 @@ public class Main {
 		jane.createPost("jane", "doe");
 		jane.createPost("CS", "Comp Sci");	
 		
-		bry.printPosts();
-		jane.printPosts();
+		bry.printUserPosts();
+		jane.printUserPosts();
 	}
 
 }
